@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_09_29_071549) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 2019_09_29_071549) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "article_id", null: false
+    t.bigint "article_id", null: false
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
